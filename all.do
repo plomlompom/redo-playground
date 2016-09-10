@@ -6,8 +6,7 @@
 # Remove target (html) files for which no sources files can be found.
 IFS=$(echo -en "\n\b")
 for file in `find . -name "*.html"`; do
-  if   test -f "$file" &&
-     ! test -f "${file%.html}.rst" &&
+  if ! test -f "${file%.html}.rst" &&
      ! test -f "${file%.html}.md"; then
     rm "$file"
   fi
