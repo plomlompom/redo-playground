@@ -15,10 +15,14 @@ done
 # Determine target files from the sources files present, declare dependencies
 # of the all.do script on them / build them if necessary.
 for file in *.rst; do
-  redo-ifchange "${file%.rst}.html"
+  if test -f "$file"; then
+    redo-ifchange "${file%.rst}.html"
+  fi
 done
 for file in *.md; do
-  redo-ifchange "${file%.md}.html"
+  if test -f "$file"; then
+    redo-ifchange "${file%.md}.html"
+  fi
 done
 
 # Run redo in subdirectories, and copy current all.do there if none exists.
