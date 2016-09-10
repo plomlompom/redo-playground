@@ -9,7 +9,7 @@ rm -f bar.html
 rm -f baz/foo.html
 rm -f baz/bar.html
 rm -f baz/all.do
-touch quux.html
-touch baz/quux.html
+echo '<p>This is an illegal .html file without a source file</p>' > quux.html
+echo '<p>This is an illegal .html file without a source file</p>' > baz/quux.html
 rm -rf .redo
 rm -rf baz/.redo
