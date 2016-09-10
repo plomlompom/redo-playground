@@ -14,14 +14,9 @@ done
 
 # Determine target files from the sources files present, declare dependencies
 # of the all.do script on them / build them if necessary.
-for file in *.rst; do
+for file in *.rst *.md; do
   if test -f "$file"; then
-    redo-ifchange "${file%.rst}.html"
-  fi
-done
-for file in *.md; do
-  if test -f "$file"; then
-    redo-ifchange "${file%.md}.html"
+    redo-ifchange "${file%.*}.html"
   fi
 done
 
@@ -29,7 +24,7 @@ done
 for d in *; do
   if test -d "$d"; then
     if ! test -f "$d"/all.do; then
-      cp $0 "$d"/all.do
+      ln -s $0 "$d"/all.do
     fi
     redo "$d"/all
   fi
